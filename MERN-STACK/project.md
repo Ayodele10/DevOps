@@ -29,10 +29,15 @@
 6. Review and launch instance
 7. Connect to the instance from your terminal (SSH into it as shown below):
 
+<img width="857" height="308" alt="image" src="https://github.com/user-attachments/assets/81c2a7ab-c2c3-4401-942d-3e5de96d26bf" />
+
+
 ## Backend  Config
 
 1. Update ubuntu using the code below:
 `sudo apt update`
+<img width="690" height="185" alt="image" src="https://github.com/user-attachments/assets/682c4c49-22e1-4d28-a30b-14c8185930b4" />
+
 
 2. Upgrade ubuntu:
 `sudo apt upgrade`
@@ -40,6 +45,8 @@
 3. Install NodeJS on the server
 `sudo apt-get install -y nodejs`
 ### The command above install both nodejs and npm (a package manger for Node; like apt for ubuntu)
+<img width="740" height="307" alt="image" src="https://github.com/user-attachments/assets/808c6f30-6b66-4869-b69b-d8be7847a532" />
+
 
 4. Verify installations
 `node -v`
@@ -55,6 +62,8 @@
    - Run the command below to initialise your project
      `npm init`
 
+<img width="721" height="424" alt="image" src="https://github.com/user-attachments/assets/d6dfe04a-c972-430a-883e-b486e2aabd16" />
+
 
 ## Installing ExpressJS
 
@@ -65,11 +74,17 @@
 2. Create a file index.js using the command below:
    `touch index.js`
 3. verify that the file is created using `ls`
+
+   <img width="646" height="356" alt="image" src="https://github.com/user-attachments/assets/680bf88b-68cd-47f0-9699-677b2e591ff9" />
+
 4. install the dotenv module using `npm install dotenv`
-5. Open the inde.js file with this command to be able to perform operations inside:
+   
+   <img width="572" height="258" alt="image" src="https://github.com/user-attachments/assets/1d8238c6-0c39-41dd-82c4-7a96f79dfd1e" />
+
+5. Open the index.js file with this command to be able to perform operations inside:
    `vim index.js`
 6. Input the following code into the file:
-```JavaScipt
+```
 const express = require('express');
 require('dotenv').config();
 
@@ -91,6 +106,7 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 ```
+<img width="518" height="746" alt="image" src="https://github.com/user-attachments/assets/7f471387-98be-4846-b337-442eef43f5c3" />
 
 7. Start the server to see if it works:
     `node index.js`
