@@ -110,9 +110,80 @@ app.listen(port, () => {
 
 7. Start the server to see if it works:
     `node index.js`
-8. 
 
 
+
+## MODELS
+
+A model is at the heart of JavaScript based applications, and it is what makes it interactive.
+
+- Install Mongoose
+  `npm install mongoose`
+- create a new folder `mkdir models`, and enter into the directory
+- create a file and name it todo.js `touch todo.js`
+- Note: the previous 3 commands above can be runned by using && operator
+  `mkdir models && cd models && touch todo.js`
+
+  <img width="766" height="60" alt="image" src="https://github.com/user-attachments/assets/af70fcfe-67e8-41ba-b0e6-54f3c55015b7" />
+
+- open the file with `vim todo.js` and paste the code below into it the file:
+  const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+```JavaScript
+const TodoSchema = new Schema({
+  action: {
+    type: String,
+    required: [true, 'The todo text field is required']
+  }
+})
+
+//create model for todo
+const Todo = mongoose.model('todo', TodoSchema);
+
+module.exports = Todo;
+
+```
+
+<img width="703" height="544" alt="image" src="https://github.com/user-attachments/assets/73b118cd-f1f4-4ce1-a314-0532438e34d7" />
+
+- in the Routes directory, open api.js `vim api.js`, delete the code with `:%d` and paste the code below:
+```JavaScript
+const express = require('express');
+const router = express.Router();
+const Todo = require('../models/todo');
+
+router.get('/todos', (req, res, next) => {
+
+//this will return all the data, exposing only the id and action field 
+//to the client
+Todo.find({}, 'action')
+.then(data => res.json(data))
+.catch(next)
+});
+
+router.post('/todos', (req, res, next) => {
+if(req.body.action){
+Todo.create(req.body)
+.then(data => res.json(data))
+.catch(next)
+}else {
+res.json({
+error: "The input field is empty"
+})
+}
+});
+
+router.delete('/todos/:id', (req, res, next) => {
+Todo.findOneAndDelete({"_id": req.params.id})
+.then(data => res.json(data))
+.catch(next)
+})
+
+module.exports = router;
+```
+
+<img width="826" height="868" alt="image" src="https://github.com/user-attachments/assets/958f0e6c-bca8-4e51-8356-c401d8bacef8" />
 
 
 
